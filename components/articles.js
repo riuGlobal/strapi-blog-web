@@ -7,7 +7,7 @@ const Articles = ({ articles }) => {
   const rightArticles = articles?.slice(leftArticlesCount, articles?.length);
 
   return (
-    <div style={{ width:"100%", display: "grid", gridTemplateColumns: "50% 50%", columnGap: "10px"}}>
+    <div style={{ width:"100%", display: "grid", gridTemplateColumns: "24% 24% 24% 24%", columnGap: "10px"}}>
       {articles?.map?.((article, i) => {
         return (
           <div>
