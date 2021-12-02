@@ -1,4 +1,4 @@
-import { useState} from 'react';
+import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import Moment from "react-moment";
 import { fetchAPI } from "../../lib/api";
@@ -8,20 +8,17 @@ import Seo from "../../components/seo";
 import { getStrapiMedia } from "../../lib/media";
 import { useEffect } from "react";
 
-const Article = ({slug}) => {
-  const [article, setArticle] = useState()
-  const [categories, setCategories] = useState([])
+const Article = ({ slug }) => {
+  const [article, setArticle] = useState();
+  const [categories, setCategories] = useState([]);
   useEffect(() => {
     (async () => {
-      const articles =  await fetchAPI(
-        `/articles?slug=${slug}`
-      );
-      const categories =  await fetchAPI("/categories");
-      setCategories(categories)
-      setArticle(articles[0])
-      
-    })()
-  }, [])
+      const articles = await fetchAPI(`/articles?slug=${slug}`);
+      const categories = await fetchAPI("/categories");
+      setCategories(categories);
+      setArticle(articles[0]);
+    })();
+  }, []);
   const imageUrl = getStrapiMedia(article?.image);
 
   const seo = {
