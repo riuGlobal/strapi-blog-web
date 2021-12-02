@@ -11,18 +11,16 @@ import { useEffect } from "react";
 const Article = ({slug}) => {
   const [article, setArticle] = useState()
   const [categories, setCategories] = useState([])
-  useEffect(async () => {
-    const articles =  await fetchAPI(
-      `/articles?slug=${slug}`
-    );
-    const categories =  await fetchAPI("/categories");
-    
-    setArticle(articles[0])
-    setCategories(categories)
-    // return {
-    //   props: { article: articles[0], categories },
-    //   // revalidate: 1,
-    // };
+  useEffect(() => {
+    (async () => {
+      const articles =  await fetchAPI(
+        `/articles?slug=${slug}`
+      );
+      const categories =  await fetchAPI("/categories");
+      setCategories(categories)
+      setArticle(articles[0])
+      
+    })()
   }, [])
   const imageUrl = getStrapiMedia(article?.image);
 
